@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card rotation with CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #048765;
+        }
+        .wrapper {
+            perspective: 1000px;
+        }
+        .card {
+            width: 200px;
+            height: 300px;
+            margin: 200px auto 100px;
+            transform-style: preserve-3d;
+            transition: transform 1.2s ease;
+            position: relative;
+        }
+        .card:hover {
+            transform: rotateY(-180deg);
+        }
+        .card div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .card_front {
+            background: url(./card_back.png);
+            transform: translateZ(1px);
+        }
+        .card_back {
+            background: url(./card_face.png);
+            transform: rotateY(180deg)  translateZ(1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <div class="card_front"></div>
+            <div class="card_back"></div>
+        </div>
+    </div>
+</body>
+</html>
